@@ -1,0 +1,22 @@
+#login-conatiner{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    border: 5px solid black;
+    /* background-color: red; */
+    /* margin: 50px; */
+}
+input{
+    padding: 15px 70px ;
+    border-radius: 2px;
+    gap: 20px;
+}
+button{
+    background-color: green;
+    color: white;
+    padding: 13px 50px ;
+    border-radius: 3px;
+    gap: 20px;
+}
