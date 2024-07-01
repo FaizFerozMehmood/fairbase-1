@@ -41,25 +41,32 @@ const Signin_btn = document.getElementById("Signin-btn")
 
 const authinCon = document.getElementById("auth_container")
 
-const signin_container = document.getElementById("signin_container")
+const logoutContainer = document.getElementById("logoutContainer")
+const userEmail = document.getElementById('userEmail')
+const LogOut_btn = document.getElementById('LogOut_btn')
 
 
 
 
 SignUP_btn.addEventListener('click',creatingUserAccount)
 Signin_btn.addEventListener('click',signIn)
+LogOut_btn.addEventListener('click',logOut)
 
 
 onAuthStateChanged(auth, (user) => {
     if (user) {
-          
+          authinCon.style.display="none";
+          logoutContainer.style.display="block"
+          userEmail.innerText=user.email
+
         // console.log("loggedIn");
       // User is signed in, see docs for a list of available properties
       // https://firebase.google.com/docs/reference/js/auth.user
       const uid = user.uid;
       // ...
     } else {
-      
+       authinCon.style.display="block";
+          logoutContainer.style.display="none"
         // console.log("User is signed out");
       // ...
     }
@@ -99,3 +106,12 @@ onAuthStateChanged(auth, (user) => {
     
 
   }
+   function logOut(){
+    signOut(auth).then(() => {
+      // Sign-out successful.
+    }).catch((error) => {
+      // An error happened.
+    });
+
+   }
+ 
