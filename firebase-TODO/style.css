@@ -3,3 +3,11 @@ ul li{
     list-style-type: decimal;
     display: flex;
 }
+input{
+    padding: 15px 90px;
+    border: 2px solid black;
+}
+button{
+    padding: 10px 30px;
+    border-radius: 3px;
+}
