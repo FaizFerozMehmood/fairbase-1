@@ -21,15 +21,20 @@ button{
 }
 #logoutContainer{
     height: 100%;
+    background-color: aqua;
 }
 .logoutContent{
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
+    gap: 20px;
+
 }
 #auth_container{
     height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+}
+#uploadContent{
+    height: 100%;
+    background-color: blue;
 }

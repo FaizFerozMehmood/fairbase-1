@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-analytics.js";
  import { getAuth,
@@ -8,11 +7,6 @@ import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.2/firebas
     signOut,
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
 
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyCQBMb6fcyz6qxqGcRaXrwkpXn-qqv-Avc",
   authDomain: "first-login-c09e7.firebaseapp.com",
@@ -63,9 +57,6 @@ onAuthStateChanged(auth, (user) => {
           signin_container.style.display="none"
           
 
-        // console.log("loggedIn");
-      // User is signed in, see docs for a list of available properties
-      // https://firebase.google.com/docs/reference/js/auth.user
       const uid = user.uid;
       // ...
     } else {
