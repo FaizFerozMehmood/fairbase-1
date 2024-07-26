@@ -19,3 +19,17 @@ button{
     border-radius: 3px;
     gap: 20px;
 }
+#logoutContainer{
+    height: 100%;
+}
+.logoutContent{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#auth_container{
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

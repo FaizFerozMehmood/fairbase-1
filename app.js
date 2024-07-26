@@ -40,6 +40,8 @@ const signinEmail = document.getElementById("signinEmail");
 const Signin_btn = document.getElementById("Signin-btn")
 
 const authinCon = document.getElementById("auth_container")
+const signin_container = document.getElementById("signin_container")
+
 
 const logoutContainer = document.getElementById("logoutContainer")
 const userEmail = document.getElementById('userEmail')
@@ -58,6 +60,8 @@ onAuthStateChanged(auth, (user) => {
           authinCon.style.display="none";
           logoutContainer.style.display="block"
           userEmail.innerText=user.email
+          signin_container.style.display="none"
+          
 
         // console.log("loggedIn");
       // User is signed in, see docs for a list of available properties
