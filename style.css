@@ -9,7 +9,7 @@
 } */
 input{
     padding: 15px 70px ;
-    border-radius: 2px;
+    border-radius: 10px;
     gap: 20px;
 }
 button{
@@ -32,9 +32,29 @@ button{
 }
 #auth_container{
     height: 100%;
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
 
+}
+#login-conatiner{
+    /* gap: 40px; */
 }
 #uploadContent{
     height: 100%;
     background-color: blue;
+}
+.signUpstyle{
+    margin-left: 45px;
+}
+#signin_container{
+    height: 100%;
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+
 }
