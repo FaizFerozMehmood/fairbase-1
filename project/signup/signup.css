@@ -1,0 +1,28 @@
+#auth_container{
+    height: 100%;
+    /* background-color: black; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 30px;
+
+}
+.accountWrapper{
+    display: flex;
+    gap: 10px;
+}
+.accountWrapper span{
+    color: blue;
+}
+input{
+    padding: 15px 70px ;
+    border-radius: 10px;
+    gap: 20px;
+}
+button{
+    background-color: green;
+    color: white;
+    padding: 13px 50px ;
+    border-radius: 3px;
+    gap: 20px;
+}
