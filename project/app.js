@@ -1,4 +1,4 @@
-import { addDoc, auth, collection, db, getDocs, onAuthStateChanged, signOut } from "./config/firebase.js";
+import { addDoc, auth, collection, db, getDocs, getDownloadURL, onAuthStateChanged, ref, signOut, storage, uploadBytesResumable } from "./config/firebase.js";
 
 const signUpEmail = document.getElementById("signUpE");
 const signUpPassword = document.getElementById("signUpP");
@@ -43,7 +43,57 @@ function logOut() {
 const postBtn = document.getElementById("button-addon2");
 const postInput = document.getElementById("postValInput");
 const cardsContainerWrapper = document.querySelector(".cardsContainerWrapper");
-const spinner = document.querySelector(".spinner-border");
+const spinner = document.querySelector(".loader2");
+const inputFile = document.getElementById("inputFile");
+const loader1 = document.querySelector(".loader");
+
+//Upload Photos Function
+
+const uploadImgHandler =async (file)=>{
+return  new Promise(async(resolve, reject)=>{
+    const storageRef = await ref(storage, `images/${Date.now()}` + file.name);
+
+    const uploadTask =  uploadBytesResumable(storageRef, file);
+    
+    // Register three observers:
+    // 1. 'state_changed' observer, called any time the state changes
+    // 2. Error observer, called on failure
+    // 3. Completion observer, called on successful completion
+    uploadTask.on('state_changed', 
+      (snapshot) => {
+        loader1.style.display = "flex"
+        loader1.style.justifyContent = "center"
+        // Observe state change events such as progress, pause, and resume
+        // Get task progress, including the number of bytes uploaded and the total number of bytes to be uploaded
+        const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+        console.log('Upload is ' + progress + '% done');
+        switch (snapshot.state) {
+          case 'paused':
+            console.log('Upload is paused');
+            break;
+          case 'running':
+            console.log('Upload is running');
+            break;
+        }
+      }, 
+      (error) => {
+        // Handle unsuccessful uploads
+        console.log("error",error);
+      }, 
+      () => {
+        // Handle successful uploads on complete
+        // For instance, get the download URL: https://firebasestorage.googleapis.com/...
+        getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
+          // console.log('File available at', downloadURL);
+          resolve(downloadURL)
+          loader1.style.display = "none"
+        });
+      }
+    );
+  })
+ 
+
+}
 
 const userPosts = [
   {
@@ -62,7 +112,7 @@ const userPosts = [
  async function getDocsPost(){
     const querySnapshot = await getDocs(collection(db, "posts"));
     if(querySnapshot){
-      spinner.style.display = "none"
+     spinner.style.display = "none"
     }
     const userPost = [];
     querySnapshot.forEach((doc) => {
@@ -82,6 +132,7 @@ const userPosts = [
   let singlePost = "";
 
   postReturn.reverse().forEach((element) => {
+    if(element.img){
     singlePost += `
     <div class="card" style="width: 100%">
     <div class="card-body">
@@ -92,21 +143,41 @@ const userPosts = [
     </p>
     </div>
     <img
-      src="https://plus.unsplash.com/premium_photo-1673306778968-5aab577a7365?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8YmFja2dyb3VuZCUyMGltYWdlfGVufDB8fDB8fHww"
+      src="${element.img}"
       class="card-img-top"
       alt="..."
     />
              </div>`;
+    }else{
+      singlePost += `
+      <div class="card" style="width: 100%">
+      <div class="card-body">
+      <p class="card-text">
+      ${
+        element.postText
+      }
+      </p>
+      </div>
+               </div>`;
+    }
   });
   cardsContainerWrapper.innerHTML = singlePost;
 }
 renderPost();
 const postHandler = async () => {
+const file =inputFile?.files[0]?.name;
   console.log(postInput.value);
+  let userImg
+  if(file){
+   userImg = await uploadImgHandler(inputFile?.files[0]);
+  if(userImg){
+    console.log(userImg);
+  }
+  }
   try {
     const docRef = await addDoc(collection(db, "posts"), {
      postText: postInput.value,
-     img: ""
+     img: userImg ? userImg : ""
     });
   
     console.log("Document written with ID: ", docRef.id);

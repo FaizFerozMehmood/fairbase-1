@@ -6,6 +6,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/fireba
     signOut,
   } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
   import { getFirestore,collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+  import {getStorage, ref, uploadBytesResumable, getDownloadURL  } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js"
 
 
 const firebaseConfig = {
@@ -22,7 +23,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
+const storage = getStorage();
+
 
 export {auth, onAuthStateChanged, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut,db
- , collection, addDoc,getDocs 
+ , collection, addDoc,getDocs, storage, ref, uploadBytesResumable, getDownloadURL
 }

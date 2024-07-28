@@ -21,7 +21,7 @@ button{
 }
 #logoutContainer{
     height: 100%;
-    background-color: aqua;
+    background-color: rgb(222, 234, 234);
 }
 .logoutContent{
     display: flex;
@@ -69,4 +69,8 @@ button{
 }
 .card{
     margin-top: 20px;
+}
+.loader{
+    display:none;
+    
 }
