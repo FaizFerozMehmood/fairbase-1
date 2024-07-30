@@ -16,12 +16,12 @@ button{
     background-color: green;
     color: white;
     padding: 13px 50px ;
-    border-radius: 3px;
+    border-radius: 30px;
     gap: 20px;
 }
 #logoutContainer{
     height: 100%;
-    background-color: rgb(222, 234, 234);
+    background-color: rgb(167, 167, 199);
 }
 .logoutContent{
     display: flex;
@@ -29,6 +29,9 @@ button{
     align-items: center;
     gap: 20px;
 
+}
+#LogOut_btn{
+    border-radius: 30px!important;
 }
 
 

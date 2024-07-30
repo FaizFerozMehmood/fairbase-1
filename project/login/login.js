@@ -1,4 +1,4 @@
-import { auth, signInWithEmailAndPassword } from "../config/firebase.js";
+import { auth, signInWithEmailAndPassword, doc, deleteDoc  } from "../config/firebase.js";
 
 const signupBtn = document.getElementById("signupBtn")
 const emailVal = document.getElementById("email");
