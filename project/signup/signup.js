@@ -9,6 +9,8 @@ const SignupBtn = document.getElementById("SignUP-btn")
 function signupHandler(){
 const email = signUpE.value
     const password = signUpP.value
+  SignupBtn.textContent = "Please wait"
+
     createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed up 
@@ -33,4 +35,5 @@ SignupBtn.addEventListener("click", signupHandler)
 
 loginBtn.addEventListener("click",()=>{
     window.location.pathname ="../login/login.html"
+
 })

@@ -15,9 +15,9 @@ const userEmail = document.getElementById("userEmail");
 const LogOut_btn = document.getElementById("LogOut_btn");
 
 LogOut_btn.addEventListener("click", logOut);
-
 onAuthStateChanged(auth, (user) => {
   if (user) {
+    
   } else {
     window.location.pathname = "./login/login.html";
     // ...
@@ -26,15 +26,21 @@ onAuthStateChanged(auth, (user) => {
 });
 
 function logOut() {
+  let isUser = false;
+  LogOut_btn.textContent = "Please wait"
+   setTimeout(()=>{
+       isUser = true
+       window.location.pathname = './login/login.html'
+   }, 3000)
+  if(isUser){
   signOut(auth)
     .then(() => {
-      setTimeout(() => {
-        window.location.pathname = "./login/login.html";
-      }, 2000);
+     
     })
     .catch((error) => {
       // An error happened.
     });
+  }
 }
 
 //LogOut_btn.addEventListener("click", logOut)

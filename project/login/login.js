@@ -5,7 +5,9 @@ const emailVal = document.getElementById("email");
 const passwordVal = document.getElementById("password");
 const signInHandlerBtn = document.getElementById("signInHandlerBtn");
 signupBtn.addEventListener("click",()=>{
+  // signupBtn.textContent="Please wait"
     window.location.pathname ="../signup/signup.html"
+    
 });
 
 
@@ -15,6 +17,8 @@ function signIn(){
     // console.log(signinPassword.value);
     const email = emailVal.value;
     const password = passwordVal.value;
+    signInHandlerBtn.textContent = "Please wait"
+
     signInWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {
     // Signed in 
@@ -22,6 +26,8 @@ function signIn(){
     console.log("userLogin",user);
 
     setTimeout(()=>{
+      signupBtn.textContent = "Please wait"
+
       window.location.href = "../index.html"
     },2000)
     // ...

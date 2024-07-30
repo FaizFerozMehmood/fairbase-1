@@ -1,11 +1,16 @@
 #auth_container{
-    height: 100%;
-    /* background-color: black; */
+    height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
     column-gap: 30px;
 
+}
+#login-conatiner{
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 15px;
+    
 }
 .accountWrapper{
     display: flex;
@@ -17,12 +22,15 @@
 input{
     padding: 15px 70px ;
     border-radius: 10px;
-    gap: 20px;
+    /* gap: 20px; */
 }
 button{
     background-color: green;
     color: white;
     padding: 13px 50px ;
-    border-radius: 3px;
+    border-radius: 30px;
     gap: 20px;
+}
+#SignUP-btn{
+    border-radius: 30px;
 }
