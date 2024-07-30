@@ -1,12 +1,6 @@
-/* #login-conatiner{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    height: 90vh;
-    border: 5px solid black;
-    margin: 50px;
-} */
+body{
+    background-color: #453c42;
+}
 input{
     padding: 15px 70px ;
     border-radius: 10px;
@@ -21,7 +15,7 @@ button{
 }
 #logoutContainer{
     height: 100%;
-    background-color: rgb(167, 167, 199);
+    background-color: rgb(111, 111, 135);
 }
 .logoutContent{
     display: flex;
